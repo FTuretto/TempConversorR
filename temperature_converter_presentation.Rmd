@@ -1,0 +1,61 @@
+---
+title: "Conversor de Temperatura"
+author: "Fabio Turetto Rodrigues"
+date: "`r Sys.Date()`"
+output:
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+## Introdução
+
+Este app Shiny converte temperaturas entre Celsius e Fahrenheit.  
+Simples, direto e interativo, para uso educacional e cotidiano.
+
+---
+
+## Interface do Usuário
+
+- Campo para inserir a temperatura.
+- Botão para selecionar a escala desejada (Celsius ou Fahrenheit).
+- Resultado exibido automaticamente abaixo.
+
+```r
+numericInput("temp", "Digite a temperatura:", value = 0)
+radioButtons("scale", "Converter para:", choices = list("Fahrenheit" = "F", "Celsius" = "C"))
+```
+
+---
+
+## Lógica de Conversão
+
+```r
+if (input$scale == "F") {
+  temp_f <- input$temp * 9/5 + 32
+  paste(input$temp, "°C é igual a", round(temp_f, 2), "°F")
+} else {
+  temp_c <- (input$temp - 32) * 5/9
+  paste(input$temp, "°F é igual a", round(temp_c, 2), "°C")
+}
+```
+
+---
+
+## Exemplo de Uso
+
+- Digite **100**
+- Selecione **Fahrenheit**
+- Resultado: `100 °C é igual a 212 °F`
+
+Altere o valor e a escala para ver conversões em tempo real!
+
+---
+
+## Conclusão
+
+- Aplicativo prático e didático.
+- Ideal para estudantes ou uso diário.
+- Publicado via **ShinyApps.io**
+- Código disponível no GitHub
+
+Acesse, teste e compartilhe!
